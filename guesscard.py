@@ -1,9 +1,12 @@
 import random
-import time
-#import numpy as np
-#Antonis Papadakis
+import time  # delay show cards
 
-numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+
+
+# import numpy as np
+# Antonis Papadakis
+
+numbers = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 shades = ["♠", "♥", "♦", "♣"]
 
 deck = []  # create deck
@@ -31,6 +34,7 @@ def createdeck():  # create deck
 
 
 def pickrandomcards():  # add unique cards until we got 21 uniques cards
+    random.seed()
     while True:
         rnd = random.choice(deck)
         if rnd not in cardgame:
@@ -116,7 +120,7 @@ def maingame():
     print("Choose one card, and keep it in to your mind\n")
 
     for row in listprintcards:  # print the 2d list to user with out [] and ,
-        print("\t\t"+"\t".join(map(str, row)))
+        print("\t\t" + "\t".join(map(str, row)))
         time.sleep(0.4)
 
     gamemenu()
@@ -132,10 +136,11 @@ def gamemenu():
             shuffle(col)  # split the 2d in 3 lists as the columns
             add_col_to_2d()  # add cards from the 3 lists to 2d after the shuffle
             count += 1
+             # clear terminal in the future
             if count <= 2:  # display only 3 times the 2d list, to not see the last result
                 # print("\n" + str(np.matrix(listprintcards)))  # print the matrix for the user to choose
                 for row in listprintcards:  # print the 2d list to user with out [] and ,
-                    print("\t\t"+"\t".join(map(str, row)))
+                    print("\t\t" + "\t".join(map(str, row)))
                     time.sleep(0.4)
 
     # print("Final Matrix list :\n" + str(np.matrix(listprintcards)))
